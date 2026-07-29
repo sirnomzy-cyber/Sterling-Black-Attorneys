@@ -199,19 +199,6 @@
     });
   }
 
-  /* ---------- Floating consultation CTA ---------- */
-  var floatingCta = document.querySelector(".floating-cta");
-  if (floatingCta) {
-    window.addEventListener(
-      "scroll",
-      function () {
-        if (window.scrollY > 700) floatingCta.classList.add("is-visible");
-        else floatingCta.classList.remove("is-visible");
-      },
-      { passive: true }
-    );
-  }
-
   /* ---------- Newsletter (footer) — simple client-side confirmation ---------- */
   document.querySelectorAll("[data-newsletter-form]").forEach(function (form) {
     form.addEventListener("submit", function (e) {

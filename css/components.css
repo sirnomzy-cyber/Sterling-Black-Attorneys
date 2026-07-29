@@ -452,14 +452,6 @@
 .breadcrumbs a:hover { color: var(--color-navy); }
 .breadcrumbs .sep { color: var(--color-slate-light); }
 
-/* ---------- Floating consultation CTA ---------- */
-.floating-cta {
-  position: fixed; bottom: var(--sp-3); right: var(--sp-3); z-index: 90;
-  transform: translateY(120%); transition: transform var(--dur-fast) var(--ease);
-}
-.floating-cta.is-visible { transform: translateY(0); }
-@media (max-width: 640px) { .floating-cta { left: var(--sp-2); right: var(--sp-2); bottom: var(--sp-2); } .floating-cta .btn { width: 100%; } }
-
 /* ---------- Back to top ---------- */
 .back-to-top {
   position: fixed; bottom: var(--sp-3); left: var(--sp-3); z-index: 90;
