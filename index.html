@@ -30,6 +30,7 @@
 </script>
 </head>
 <body>
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar"></div></div>
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <div class="announcement">
@@ -100,13 +101,15 @@
         </div>
       </nav>
     </header>
-    <img src="https://images.unsplash.com/photo-1436450412740-6b988f486c6b?auto=format&fit=crop&w=1800&h=1000&q=80" alt="" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+    <div data-parallax style="position:absolute; inset:0; overflow:hidden;">
+      <img class="hero-kenburns" src="https://images.unsplash.com/photo-1436450412740-6b988f486c6b?auto=format&fit=crop&w=1800&h=1000&q=80" alt="" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+    </div>
     <div aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(15,23,42,0.94) 0%, rgba(15,23,42,0.88) 42%, rgba(15,23,42,0.55) 100%);"></div>
     <div class="wrap-max" style="position:relative;">
       <div class="grid-12" style="align-items:center;">
         <div style="grid-column: 1 / span 7;">
           <p class="eyebrow" style="color:var(--color-gold);">Sterling &amp; Black Attorneys</p>
-          <h1 style="margin-top:var(--sp-2); color:#fff;">Strategic legal counsel for individuals and businesses</h1>
+          <h1 data-split-words style="margin-top:var(--sp-2); color:#fff;">Strategic legal counsel for individuals and businesses</h1>
           <p class="lead" style="color:rgba(255,255,255,0.78); margin-top:var(--sp-3); max-width:560px;">Providing trusted legal guidance with integrity, precision, and decades of combined experience across corporate, litigation, real estate, family, and immigration matters.</p>
           <div class="flex gap-3 flex-wrap mt-6">
             <a href="schedule-consultation.html" class="btn btn-gold">Schedule a Consultation</a>

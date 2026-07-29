@@ -34,3 +34,78 @@
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 .fade-in { animation: fadeIn var(--dur-slow) var(--ease) both; }
+
+/* ============================================================
+   ADDITIONAL LIVELY-BUT-RESTRAINED ANIMATIONS
+   Curated for a premium legal brand: subtle, editorial, never
+   gimmicky. Durations stay in the 300-600ms band except slow
+   ambient effects (Ken Burns, scroll progress) which are
+   intentionally slower and near-imperceptible in the moment.
+   ============================================================ */
+
+/* ---------- Scroll progress bar ---------- */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  z-index: 999; pointer-events: none; background: transparent;
+}
+.scroll-progress-bar {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-deep));
+  transition: width 100ms linear;
+}
+
+/* ---------- Navbar shrink on scroll ---------- */
+.nav-inner { transition: min-height var(--dur-fast) var(--ease), padding-block var(--dur-fast) var(--ease); }
+.site-header.is-solid .nav-inner,
+.site-header.is-static .nav-inner { min-height: 68px; padding-block: 14px; }
+
+/* ---------- Card photo zoom on hover ---------- */
+.card { overflow: hidden; }
+.card img.photo-cover { transition: transform 600ms var(--ease); }
+.card:hover img.photo-cover { transform: scale(1.06); }
+
+/* ---------- Button shine sweep (primary CTAs only) ---------- */
+.btn-primary, .btn-gold { position: relative; overflow: hidden; }
+.btn-primary::after, .btn-gold::after {
+  content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg); transition: left 600ms var(--ease); pointer-events: none;
+}
+.btn-primary:hover::after, .btn-gold:hover::after { left: 130%; }
+
+/* ---------- Practice / award icon micro-interaction ---------- */
+.practice-card .icon, .award-card .icon {
+  transition: transform 350ms var(--ease), background 350ms var(--ease), color 350ms var(--ease);
+}
+.practice-card:hover .icon, .award-card:hover .icon {
+  transform: scale(1.1) rotate(-4deg);
+  background: var(--color-gold); color: var(--color-navy);
+}
+
+/* ---------- Testimonial stars pop in slightly after the card ---------- */
+[data-reveal="stagger"] .testimonial-card .stars {
+  display: inline-block; opacity: 0; transform: scale(0.7);
+  transition: opacity 450ms var(--ease) 150ms, transform 450ms var(--ease) 150ms;
+}
+[data-reveal="stagger"].is-visible .testimonial-card .stars { opacity: 1; transform: scale(1); }
+
+/* ---------- Hero Ken Burns (slow ambient zoom on hero photography) ---------- */
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.hero-kenburns { animation: kenburns 26s ease-in-out infinite alternate; will-change: transform; }
+
+/* ---------- Hero headline word-by-word reveal ---------- */
+[data-split-words] .word {
+  display: inline-block; opacity: 0; transform: translateY(18px);
+  transition: opacity 550ms var(--ease), transform 550ms var(--ease);
+}
+[data-split-words].is-revealed .word { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-kenburns { animation: none; }
+  [data-split-words] .word { opacity: 1; transform: none; transition: none; }
+  .card img.photo-cover, .practice-card .icon, .award-card .icon { transition: none; }
+  .btn-primary::after, .btn-gold::after { display: none; }
+}

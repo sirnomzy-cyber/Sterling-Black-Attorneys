@@ -96,7 +96,49 @@
     });
   }
 
-  /* ---------- Accordion (FAQ) ---------- */
+  /* ---------- Scroll progress bar ---------- */
+  var progressBar = document.querySelector(".scroll-progress-bar");
+  if (progressBar) {
+    var updateProgress = function () {
+      var doc = document.documentElement;
+      var scrollable = doc.scrollHeight - doc.clientHeight;
+      var pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      progressBar.style.width = pct + "%";
+    };
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    updateProgress();
+  }
+
+  /* ---------- Hero headline word-by-word reveal ---------- */
+  document.querySelectorAll("[data-split-words]").forEach(function (el) {
+    var text = el.textContent;
+    var words = text.trim().split(/\s+/);
+    el.innerHTML = words
+      .map(function (w, i) {
+        return '<span class="word" style="transition-delay:' + (i * 55) + 'ms">' + w + "</span>";
+      })
+      .join(" ");
+    // Trigger on next frame so the transition actually runs
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        el.classList.add("is-revealed");
+      });
+    });
+  });
+
+  /* ---------- Hero parallax (minimal, disabled for reduced motion) ---------- */
+  var parallaxEl = document.querySelector("[data-parallax]");
+  if (parallaxEl && !reduceMotion) {
+    var onParallax = function () {
+      var offset = Math.min(window.scrollY * 0.15, 80);
+      parallaxEl.style.transform = "translateY(" + offset + "px)";
+    };
+    window.addEventListener("scroll", onParallax, { passive: true });
+    onParallax();
+  }
+
+
   document.querySelectorAll(".accordion-item").forEach(function (item) {
     var trigger = item.querySelector(".accordion-trigger");
     var panel = item.querySelector(".accordion-panel");
