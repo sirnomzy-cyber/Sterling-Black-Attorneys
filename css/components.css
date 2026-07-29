@@ -308,6 +308,8 @@
 .attorney-card .meta, .attorney-card .desc { color: rgba(255,255,255,0.6); font-size: var(--fs-small); margin-top: var(--sp-2); line-height: var(--lh-relaxed); }
 .attorney-card .text-link { color: var(--color-gold); border-bottom-color: var(--color-gold); margin-top: var(--sp-3); }
 .attorney-card .text-link:hover { color: var(--color-white); }
+.hero-inset { padding-left: var(--sp-8); }
+@media (max-width: 900px) { .hero-inset { padding-left: var(--sp-4); } }
 
 /* ---------- Two-column bullet list (spreads short items across the
    full content width instead of stacking narrowly on the left) ---------- */

@@ -65,7 +65,7 @@
 .card:hover img.photo-cover { transform: scale(1.06); }
 
 /* ---------- Button shine sweep (primary CTAs only) ---------- */
-.btn-primary, .btn-gold { position: relative; overflow: hidden; }
+.btn-primary:not(.floating-cta), .btn-gold:not(.floating-cta) { position: relative; overflow: hidden; }
 .btn-primary::after, .btn-gold::after {
   content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
   background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
